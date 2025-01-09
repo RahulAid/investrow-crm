@@ -1,0 +1,83 @@
+.leads{
+  margin: 10px;
+}
+
+.leads-details{
+  margin: 10px;
+  height: 500px;
+}
+
+.scroller {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.table-container{
+  margin: 30px;
+  min-height: 100px;
+  height:max-content;
+  width: max-content;
+  margin-top: 10px;
+
+}
+
+.table{
+  font-size: 12px;
+}
+
+.table-head{
+  background-color: hsl(206deg 85.92% 64.22%);
+  color: white;
+  margin: auto;
+  height: auto;
+}
+
+.summary-figure{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 60px;
+  text-align: center;
+  font-weight: 500;
+  color: #0dcaf0;
+}
+
+.summary-title{
+  margin-top: 0px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+  color: rgb(53, 50, 50);
+}
+
+.home-edit{
+  cursor: pointer;
+  /* color: hsl(206deg 85.92% 64.22%); */
+}
+
+.table-content td {
+ width: max-content;
+ border: 2px solid #0dcaf0;
+ padding: 15px;
+}
+
+.search-input {
+  margin-right: 20px;
+  border: 2px solid;
+  min-width: 400px;
+  position: relative; /* Make the element relative to enable translation */
+  transition: transform 1s ease-in-out; /* Apply the transition to the transform property */
+}
+
+.search-input.enter {
+  transform: translateX(100%); /* Initially off-screen to the right */
+}
+
+.search-input.exit {
+  transform: translateX(100%); /* Slide out to the right */
+}
+
+.search-input.active {
+  transform: translateX(0); /* Move to the normal position when active */
+}
+
+
