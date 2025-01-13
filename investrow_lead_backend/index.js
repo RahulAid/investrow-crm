@@ -15,10 +15,14 @@ import path from "path";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "*", // Or specify your domain, e.g., 'https://yourdomain.com'
+  })
+);
 app.use(express.json(urlencoded, true));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 // Fix for __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -39,7 +43,7 @@ db.connect((err) => {
     console.error("Error connecting to the database: " + err.stack);
     return;
   }
-  app.listen(PORT, () => {
+  app.listen(3000, "0.0.0.0", () => {
     console.log(`Server is running on port ${PORT}`);
   });
   console.log("Connected to the database as id " + db.threadId);
@@ -78,7 +82,7 @@ async function sendEmail(lead, userEmail) {
     );
 
     const leadMailOptions = {
-      from: "tdemo651@gmail.com",
+      from: process.env.SENDER_EMAIL,
       to: lead.email_id,
       subject: "Follow-up Reminder",
       html: leadEmailTemplate,
@@ -95,8 +99,8 @@ async function sendEmail(lead, userEmail) {
     );
 
     const userMailOptions = {
-      from: "tdemo651@gmail.com",
-      to: "raccess97@gmail.com" /* userEmail */,
+      from: process.env.SENDER_EMAIL,
+      to: userEmail,
       subject: "Lead Follow-up Reminder",
       html: userEmailTemplate,
     };
